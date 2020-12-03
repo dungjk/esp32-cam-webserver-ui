@@ -1,0 +1,10 @@
+.dropdown_component {
+  position: relative;
+  display: flex;
+}
+
+.dropdown_list {
+  position: absolute;
+  left: 0;
+  top: 100%;
+}

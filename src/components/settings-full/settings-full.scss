@@ -1,0 +1,54 @@
+@import '../../scss/variable';
+
+.container_settings {
+  width: 400px;
+  background-color: $color-mine-shaft;
+  display: flex;
+  flex-direction: column;
+}
+
+.close_setting {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1px solid $color-river-bed;
+  padding: 5px 10px;
+
+  >span {
+    cursor: pointer;
+  }
+}
+
+.setting_block {
+  display: flex;
+  padding: 5px;
+  align-items: center;
+
+  >span {
+    padding-right: 10px;
+    min-width: 120px;
+  }
+
+  >div {
+    flex: 1;
+  }
+}
+
+.setting_options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.setting_foot {
+  display: flex;
+  padding: 5px 10px;
+  justify-content: flex-end;
+
+  >button {
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
