@@ -1,6 +1,5 @@
-import createStore from 'redux-zero';
-import { connect } from 'redux-zero/devtools';
-import { applyMiddleware } from 'redux-zero/middleware';
+import createStore from 'unistore';
+import devtools from 'unistore/devtools';
 
 export interface StoreModel {
   settingShow: boolean;
@@ -16,10 +15,6 @@ const initialState: StoreModel = {
   cameraEnable: false,
 };
 
-let middlewares: any = [];
-if (process.env.NODE_ENV === 'development') {
-  middlewares = connect ? applyMiddleware(connect(initialState)) : [];
-}
-const store = createStore<StoreModel>(initialState as any, middlewares);
+const store = process.env.NODE_ENV === 'production' ? createStore(initialState) : devtools(createStore(initialState));
 
 export default store;

@@ -1,5 +1,5 @@
 import { h, FunctionalComponent } from 'preact';
-import { connect } from 'redux-zero/preact';
+import { connect } from 'unistore/preact';
 import SettingFull from './settings-full/setting-full';
 import MenuBar from './menu-bar/menu-bar';
 import CameraView from './camera-view/camera-view';
@@ -14,7 +14,7 @@ const App: FunctionalComponent<{ settingShow: boolean; cameraUrl: string; camera
     <section className={section_main}>
       <MenuBar />
       <div className={content}>
-        {settingShow ? <SettingFull /> : null}
+        {settingShow && <SettingFull />}
         <div>
           <CameraView source={cameraUrl} enable={cameraEnable} />
         </div>

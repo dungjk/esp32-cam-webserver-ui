@@ -9,8 +9,6 @@ import { terser } from 'rollup-plugin-terser';
 import { extname } from 'path';
 
 const isDevelopmentEnv = process.env.NODE_ENV === 'development';
-const isBeta = process.env.SITE === 'beta';
-const isStaging = process.env.SITE === 'staging';
 
 console.log('Environment', process.env.NODE_ENV);
 
@@ -68,9 +66,10 @@ const plugins = [
     jsnext: true,
     preferBuiltins: true,
     browser: true,
+    mainFields: ['module', 'jsnext:main', 'main', 'browser']
   }),
   rollupCommonjs({
-    include: 'node_modules/**',
+    exclude: ['preact']
   }),
   rollupTs2({
     noEmitOnError: false,
@@ -86,8 +85,6 @@ const plugins = [
       scopeBehaviour: 'local',
       generateScopedName: isDevelopmentEnv
         ? '[name]__[local]___[hash:base64:5]'
-        : isBeta || isStaging
-        ? '[local]___[hash:base64:8]'
         : '[hash:base64:8]',
     },
     autoModules: false,

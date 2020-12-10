@@ -3,7 +3,7 @@ import { FunctionalComponent, h } from 'preact';
 import { useState } from 'preact/hooks';
 import { ArrayFind, ArrayMap } from 'utils/array.utils';
 
-import { dropdown_component, dropdown_list } from './dropdown.scss';
+import { dropdown_component, dropdown_list, label_text, drop_icon } from './dropdown.scss';
 
 type DropItemType = {
   key: any;
@@ -38,8 +38,8 @@ const Dropdown: FunctionalComponent<{
   onSelect?: (key: DropItemType) => void;
 }> = ({ options, key, onSelect }) => {
   const [open, setOpen] = useState(false);
-  const onToggleClicked = (e) => {
-    setOpen(!open);
+  const openDropdown = () => {
+    setOpen(true);
   };
   const onSelectItem = (it: DropItemType) => {
     console.log(it);
@@ -48,8 +48,13 @@ const Dropdown: FunctionalComponent<{
   const selectedItem = ArrayFind(options, (it) => it.key === key);
   return (
     <div className={dropdown_component}>
-      <span>{selectedItem?.value}</span>
-      <span onClick={onToggleClicked}>
+      <span className={label_text}>{selectedItem?.value}</span>
+      <span
+        className={drop_icon}
+        onClick={() => {
+          openDropdown();
+        }}
+      >
         <ChevronDown size={14} />
       </span>
       {open ? <DropList items={options} onSelect={onSelectItem} /> : null}

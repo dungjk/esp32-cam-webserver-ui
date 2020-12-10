@@ -1,21 +1,20 @@
 import { Sliders, Aperture, Television } from 'icons';
 import { FunctionalComponent, h } from 'preact';
-import appActions from '../../store/app.actions';
-import { connect } from 'redux-zero/preact';
+import appStore from 'store/app.store';
+import { connect } from 'unistore/preact';
 import classNames from 'classnames';
 import { menu_bar, menu_item, menu_active, menu_disable } from './menu-bar.scss';
 import { IconsColor } from 'app-constants';
 
 const MenuBar: FunctionalComponent<{
   settingShow: boolean;
-  toggleSetting: (show: boolean) => void;
-}> = ({ settingShow, toggleSetting }) => {
+}> = ({ settingShow }) => {
   return (
     <nav className={menu_bar}>
       <div
         className={classNames(menu_item, settingShow ? classNames(menu_disable, menu_active) : null)}
         onClick={() => {
-          toggleSetting(!settingShow);
+          appStore.setState({ settingShow: true });
         }}
       >
         <Sliders size={16} color={IconsColor} />
@@ -34,4 +33,4 @@ const MenuBar: FunctionalComponent<{
 };
 
 const mapToProps = ({ settingShow }) => ({ settingShow });
-export default connect(mapToProps, appActions)(MenuBar);
+export default connect(mapToProps)(MenuBar);

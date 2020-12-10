@@ -1,5 +1,8 @@
-const actions = () => ({
-  toggleSetting(state, show: boolean) {
+import { Store } from 'unistore';
+import { StoreModel } from './app.store';
+
+const actions = (store: Store<StoreModel>) => ({
+  toggleSetting: (state, show: boolean) => {
     return {
       settingShow: !!show,
     };
