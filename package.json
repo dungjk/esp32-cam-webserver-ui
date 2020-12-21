@@ -7,12 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx rollup -c --environment NODE_ENV:production",
     "build:dev": "npx rollup -c --environment NODE_ENV:development",
-    "watch": "npx rollup -c -w --environment NODE_ENV:development"
+    "watch": "npx rollup -c -w --environment NODE_ENV:development",
+    "serve": "npx serve"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "13.0.0",
+    "@rollup/plugin-commonjs": "15.1.0",
     "@rollup/plugin-html": "^0.2.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-replace": "^2.3.4",

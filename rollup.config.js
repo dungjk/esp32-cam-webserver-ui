@@ -69,7 +69,7 @@ const plugins = [
     mainFields: ['module', 'jsnext:main', 'main', 'browser']
   }),
   rollupCommonjs({
-    exclude: ['preact']
+    transformMixedEsModules: true,
   }),
   rollupTs2({
     noEmitOnError: false,
